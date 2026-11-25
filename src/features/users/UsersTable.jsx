@@ -1,6 +1,7 @@
 
 import { useUsers } from "./queries";
 import SortableHeader from "./SortableHeader";
+import TablePagination from "./TablePagination";
 
 function UsersTable({ params, update }) {
   const { data, isLoading, isError, error, isFetching, refetch } =
@@ -135,7 +136,14 @@ function UsersTable({ params, update }) {
             </tr>
           ))}
         </tbody>
-      </table>
+            </table>
+
+      <TablePagination
+        page={params.page}
+        pageSize={params.pageSize}
+        total={data?.total || 0}
+        onPageChange={(newPage) => update({ page: newPage })}
+      />
     </div>
   );
 }

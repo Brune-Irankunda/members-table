@@ -1,7 +1,12 @@
 
 import "./App.css";
 
+import UsersTable from "./features/users/UsersTable";
+import { useTableParams } from "./hooks/useTableParams";
+
 function App() {
+  const { params, update } = useTableParams();
+
   return (
     <div className="app">
       <header className="dashboard-header">
@@ -33,9 +38,11 @@ function App() {
 
         <section className="table-section">
           <h3>All Members</h3>
-          <p className="placeholder">
-            Your members table will appear here.
-          </p>
+
+          <UsersTable
+            params={params}
+            update={update}
+          />
         </section>
       </main>
     </div>
